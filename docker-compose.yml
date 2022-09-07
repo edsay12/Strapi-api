@@ -1,0 +1,57 @@
+version: '3.1'
+
+services:
+  blog_strapi_api:
+    container_name: blog_strapi_api
+    hostname: blog_strapi_api
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: senha
+      POSTGRES_DB: blog-strapi
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+        - ~/.PostgressData/postgresonly/blog_strapi_api:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+
+
+# version: '3.6'
+# services:
+#   mysql:
+#       environment:
+#           - MYSQL_DATABASE=root
+#           - MYSQL_ROOT_PASSWORD=changeme
+#           - MYSQL_USER=dbuser
+#           - MYSQL_PASSWORD=changeme
+#       command:
+#          - --table_definition_cache=100
+#          - --performance_schema=0
+#          - --default-authentication-plugin=mysql_native_password
+#          - --innodb_use_native_aio=0
+#       volumes:
+#           - ./init:/docker-entrypoint-initdb.d
+#           - ./dbdata:/var/lib/mysql
+#       container_name: mysqldb
+#       image: mysql
+
+# module.exports = ({ env }) => ({
+#   // ...
+#   upload: {
+#     provider: 'cloudinary',
+#     providerOptions: {
+#       cloud_name: env('CLOUDINARY_NAME'),
+#       api_key: env('CLOUDINARY_KEY'),
+#       api_secret: env('CLOUDINARY_SECRET'),
+#     },
+#     actionOptions: {
+#       upload: {},
+#       delete: {},
+#     },
+#   },
+#   // ...
+# });
+
+# CLOUDINARY_NAME: 'dhsz6des9',
+# CLOUDINARY_KEY: '731267555562559',
+# CLOUDINARY_SECRET: 'y-TqhqlF5sAnlE2UNLbzZND6TTI'
